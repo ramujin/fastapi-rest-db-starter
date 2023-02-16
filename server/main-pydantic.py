@@ -34,7 +34,6 @@ class User(BaseModel):
 
 # CREATE SQL query
 def db_create_user(first_name:str, last_name:str) -> int:
-
   '''
   1. Open a connection to the database
   2. INSERT a new user into the table
@@ -45,7 +44,6 @@ def db_create_user(first_name:str, last_name:str) -> int:
 
 # SELECT SQL query
 def db_select_users(user_id:int=None) -> list:
-
   '''
   1. Open a connection to the database
   2. If the user_id is specified as an argument, perform a SELECT for just that user record
@@ -57,7 +55,6 @@ def db_select_users(user_id:int=None) -> list:
 
 # UPDATE SQL query
 def db_update_user(user_id:int, first_name:str, last_name:str) -> bool:
-
   '''
   1. Open a connection to the database
   2. UPDATE the user in the database
@@ -69,7 +66,6 @@ def db_update_user(user_id:int, first_name:str, last_name:str) -> bool:
 
 # DELETE SQL query
 def db_delete_user(user_id:int) -> bool:
-
   '''
   1. Open a connection to the database
   2. DELETE the user in the database
@@ -95,7 +91,6 @@ def get_home(request:Request) -> HTMLResponse:
 # Used to query a collection of all users
 @app.get('/users')
 def get_users() -> dict:
-
   '''
   1. Query the database for all users
   2. Format the results as a list of dictionaries (JSON objects!) where the dictionary keys are:
@@ -108,7 +103,6 @@ def get_users() -> dict:
 # Used to query a single user
 @app.get('/users/{user_id}')
 def get_user(user_id:int) -> dict:
-
   '''
   1. Query the database for the user with a database ID of 'user_id'
   2. If the user does not exist, return an empty object
@@ -121,7 +115,6 @@ def get_user(user_id:int) -> dict:
 # Used to create a new user
 @app.post("/users")
 def post_user(user:User) -> dict:
-
   '''
   1. Retrieve the data asynchronously from the 'request' object
   2. Extract the first and last name from the POST body
@@ -133,7 +126,6 @@ def post_user(user:User) -> dict:
 # PUT /user
 @app.put('/users/{user_id}')
 def put_user(user_id:int, user:User) -> dict:
-
   '''
   1. Retrieve the data asynchronously from the 'request' object
   2. Attempt to update the user first and last name in the database
