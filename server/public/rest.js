@@ -31,15 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // Stop the default form behavior
     event.preventDefault();
 
+    // Submit POST request from the add form
+    /*
+      1. Grab the data from the input fields
+      2. Grab the action and method attributes from the form
+      3. Submit a server POST request and when the server responds...
+        4. Insert a template row into the table
+        5. Update the content of the newly added row with the ID, first_name, and last_name of the user
+      6. Remove the alert below this comment block
+    */
+
     alert('Feature is incomplete!');
 
-  /*
-    1. Grab the data from the input fields
-    2. Grab the action and method attributes from the form
-    3. Submit a server POST request and when the server responds...
-      4. Insert a template row into the table
-      5. Update the content of the newly added row with the ID, first_name, and last_name of the user
-  */
   });
 
   //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
