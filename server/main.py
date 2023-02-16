@@ -18,9 +18,9 @@ db_pass = os.environ['MYSQL_PASSWORD']
 db_name = os.environ['MYSQL_DATABASE']
 
 app = FastAPI()                                   # Specify the "app" that will run the routing
-views = Jinja2Templates(directory="views")        # Specify where the HTML files are located
-static_files = StaticFiles(directory="public")    # Specify where the static files are located
-app.mount("/public", static_files, name="public") # Mount the static files directory to /public
+views = Jinja2Templates(directory='views')        # Specify where the HTML files are located
+static_files = StaticFiles(directory='public')    # Specify where the static files are located
+app.mount('/public', static_files, name='public') # Mount the static files directory to /public
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 # Define helper functions for CRUD operations
@@ -72,10 +72,9 @@ def db_delete_user(user_id:int) -> bool:
 # Home route to load the main page in a templatized fashion
 
 # GET /
-@app.get("/", response_class=HTMLResponse)
+@app.get('/', response_class=HTMLResponse)
 def get_home(request:Request) -> HTMLResponse:
-  with open("views/index.html") as html:
-    return views.TemplateResponse("index.html", {"request":request, "users":db_select_users()})
+  return views.TemplateResponse('index.html', {'request':request, 'users':db_select_users()})
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 # RESTful User Routes
