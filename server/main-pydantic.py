@@ -1,6 +1,7 @@
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 # Necessary Imports
 from fastapi import FastAPI, Request              # The main FastAPI import and Request object
+from pydantic import BaseModel                    # Used to define the model matching the DB Schema
 from fastapi.responses import HTMLResponse        # Used for returning HTML responses (JSON is default)
 from fastapi.templating import Jinja2Templates    # Used for generating HTML from templatized files
 from fastapi.staticfiles import StaticFiles       # Used for making static resources available to server
@@ -21,6 +22,12 @@ app = FastAPI()                                   # Specify the "app" that will 
 views = Jinja2Templates(directory="views")        # Specify where the HTML files are located
 static_files = StaticFiles(directory="public")    # Specify where the static files are located
 app.mount("/public", static_files, name="public") # Mount the static files directory to /public
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+# Define a User class that matches the SQL schema we defined for our users
+class User(BaseModel):
+  first_name: str
+  last_name: str
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 # Define helper functions for CRUD operations
@@ -113,7 +120,7 @@ def get_user(user_id:int) -> dict:
 # POST /user
 # Used to create a new user
 @app.post("/users")
-async def post_user(request:Request) -> dict:
+def post_user(user:User) -> dict:
 
   '''
   1. Retrieve the data asynchronously from the 'request' object
@@ -125,7 +132,7 @@ async def post_user(request:Request) -> dict:
 
 # PUT /user
 @app.put('/users/{user_id}')
-async def put_user(user_id:int, request:Request) -> dict:
+def put_user(user_id:int, user:User) -> dict:
 
   '''
   1. Retrieve the data asynchronously from the 'request' object
