@@ -1,7 +1,14 @@
--- This file will define our schemas when creating the database and tables
+create database if not exists ece140;
 
--- Steps we need to take to complete this file
--- 1. Create the database
--- 2. Select the database to use
--- 3. Create the users table and define the schema
--- 4. Insert initial seed records into the table
+use ece140;
+
+-- DUMP EVERYTHING... YOU REALLY SHOULDN'T DO THIS!
+drop table if exists users;
+
+-- 1. Create the users table
+create table if not exists users (
+  [INSERT CODE HERE]
+);
+
+-- 2. Insert initial seed records into the table
+[INSERT CODE HERE]
