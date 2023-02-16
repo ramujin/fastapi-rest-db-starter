@@ -98,7 +98,7 @@ def get_users() -> dict:
   '''
   return {'users': []}
 
-# GET /user
+# GET /users/{user_id}
 # Used to query a single user
 @app.get('/users/{user_id}')
 def get_user(user_id:int) -> dict:
@@ -110,7 +110,7 @@ def get_user(user_id:int) -> dict:
   '''
   return {}
 
-# POST /user
+# POST /users
 # Used to create a new user
 @app.post("/users")
 def post_user(user:User) -> dict:
@@ -122,7 +122,7 @@ def post_user(user:User) -> dict:
   '''
   return {}
 
-# PUT /user
+# PUT /users/{user_id}
 @app.put('/users/{user_id}')
 def put_user(user_id:int, user:User) -> dict:
   '''
@@ -132,7 +132,7 @@ def put_user(user_id:int, user:User) -> dict:
   '''
   return {'success': False}
 
-# DELETE /user
+# DELETE /users/{user_id}
 @app.delete('/users/{user_id}')
 def delete_user(user_id:int) -> dict:
   '''
